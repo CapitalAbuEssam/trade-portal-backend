@@ -1,22 +1,19 @@
-/*
-const app = require('./app');
-const PORT = process.env.PORT || 5001;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
-*/
-
-const { sequelize } = require('./models'); // No need for './src/models' since `src` is the root.
-const app = require('./app');
+const express = require("express");
+const { sequelize } = require("./models");
+const app = require("./app");
+const productRoutes = require('./routes/products'); // Import product routes
+app.use('/api/products', productRoutes); // Register the route
 
 const PORT = process.env.PORT || 5001;
+
+// Middleware to parse JSON
+app.use(express.json());
 
 sequelize.sync({ force: true }).then(() => {
-    console.log('Database synchronized!');
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
+  console.log("Database synchronized!");
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 });
 
 

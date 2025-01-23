@@ -8,5 +8,10 @@ module.exports = (sequelize) => {
         classification: { type: DataTypes.INTEGER },
         chapter: { type: DataTypes.INTEGER },
         image_url: { type: DataTypes.STRING },
+        trader_id: { 
+            type: DataTypes.INTEGER, 
+            allowNull: false, 
+            references: { model: 'Users', key: 'id' }, // Reference Users table
+        },
     });
 };

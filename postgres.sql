@@ -1,0 +1,13 @@
+CREATE DATABASE trade_portal;
+
+CREATE USER trade_admin WITH PASSWORD 'secure_password';
+
+GRANT ALL PRIVILEGES ON DATABASE trade_portal TO trade_admin;
+
+
+ALTER USER trade_admin WITH PASSWORD 'secure_password';
+
+GRANT ALL PRIVILEGES ON SCHEMA public TO trade_admin;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO trade_admin;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO trade_admin;
+
