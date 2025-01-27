@@ -19,7 +19,7 @@ curl -X POST http://localhost:5001/api/auth/register \
     "name": "Alice Smith",
     "email": "alice@example.com",
     "password": "password123",
-    "role": "trader"
+    "role": "admin"
 }'
 
 # Login
@@ -70,3 +70,8 @@ curl -X POST http://localhost:5001/api/auth/register \
     "password": "12345River$ea",
     "role": "trader"
 }'
+
+
+curl -X GET http://localhost:5001/api/admin/users \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer "
