@@ -5,7 +5,7 @@ const sendEmail = require('../utils/email');
 
 exports.register = async (req, res) => {
     try {
-        const { name, email, password, role } = req.body;
+        const { firstName, lastName, email, phone, companyName, companySector, password, role } = req.body;
 
         // Check if the user already exists
         const existingUser = await User.findOne({ where: { email } });
@@ -17,7 +17,16 @@ exports.register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create the user
-        const user = await User.create({ name, email, password: hashedPassword, role });
+        const user = await User.create({
+            firstName,
+            lastName,
+            email,
+            phone,
+            companyName,
+            companySector,
+            password: hashedPassword,
+            role,
+        });        
 
         // Fetch welcome email template
         const template = await EmailTemplate.findOne({ where: { name: 'welcome_email' } });

@@ -33,6 +33,13 @@ curl -X POST http://localhost:5001/api/auth/login \
 curl -X POST http://localhost:5001/api/auth/login \
 -H "Content-Type: application/json" \
 -d '{
+    "email": "amanyalaanak@gmail.com",
+    "password": "securepassword123"
+}'
+
+curl -X POST http://localhost:5001/api/auth/login \
+-H "Content-Type: application/json" \
+-d '{
     "email": "alice@example.com",
     "password": "password123"
 }'
