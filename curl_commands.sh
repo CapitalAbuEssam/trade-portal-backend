@@ -16,10 +16,14 @@ curl -X POST http://localhost:5001/api/auth/register \
 curl -X POST http://localhost:5001/api/auth/register \
 -H "Content-Type: application/json" \
 -d '{
-    "name": "Alice Smith",
-    "email": "alice@example.com",
-    "password": "password123",
-    "role": "admin"
+    "firstName": "Amany",
+    "lastName": "Badr",
+    "email": "amanyalaanak@gmail.com",
+    "phone": "01225767411",
+    "companyName": "storakeg",
+    "companySector": "Programmer",
+    "password": "securepassword123",
+    "role": "trader"
 }'
 
 # Login
