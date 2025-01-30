@@ -15,6 +15,7 @@ const emailTemplateRoutes = require('./routes/emailTemplates');
 const regulationRoutes = require('./routes/regulation');
 const adminRoutes = require('./routes/admin'); // Add admin routes
 
+
 // Register routes
 app.use('/api/auth', authRoutes);
 app.use('/api/emailTemplates', emailTemplateRoutes);

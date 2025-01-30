@@ -26,12 +26,45 @@ curl -X POST http://localhost:5001/api/auth/register \
     "role": "trader"
 }'
 
+curl -X POST http://localhost:5001/api/auth/register \
+-H "Content-Type: application/json" \
+-d '{
+    "firstName": "Muhammad",
+    "lastName": "Essam",
+    "email": "example@gmail.com",
+    "phone": "01225767411",
+    "companyName": "example",
+    "companySector": "example",
+    "password": "securepassword101",
+    "role": "admin"
+}'
+
+curl -X POST http://localhost:5001/api/auth/register \
+-H "Content-Type: application/json" \
+-d '{
+    "firstName": "Deleted User",
+    "lastName": "I am still here",
+    "email": "delete@gmail.com",
+    "phone": "01225767411",
+    "companyName": "delete",
+    "companySector": "delete",
+    "password": "delete",
+    "role": "trader"
+}'
+
 # Login
 curl -X POST http://localhost:5001/api/auth/login \
 -H "Content-Type: application/json" \
 -d '{
-    "email": "john@example.com",
-    "password": "password123"
+    "email": "example@gmail.com",
+    "password": "securepassword101"
+}'
+
+curl -X POST http://localhost:5001/api/auth/login \
+-H "Content-Type: application/json" \
+-d '{
+    "email": "delete@gmail.com",
+    "password": "delete"
 }'
 
 curl -X POST http://localhost:5001/api/auth/login \
@@ -41,12 +74,16 @@ curl -X POST http://localhost:5001/api/auth/login \
     "password": "securepassword123"
 }'
 
-curl -X POST http://localhost:5001/api/auth/login \
+# make the admin list everybody
+curl -X GET http://localhost:5001/api/admin/users \
 -H "Content-Type: application/json" \
--d '{
-    "email": "alice@example.com",
-    "password": "password123"
-}'
+-H "Authorization: Bearer <your_admin_token>"
+
+# admin delete actions
+curl -X DELETE http://localhost:5001/api/admin/users/3 \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer <your_admin_token>"
+
 
 # Insert Regulation
 curl -X POST http://localhost:5001/api/regulations \
